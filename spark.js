@@ -91,7 +91,9 @@ Spark.prototype.initialise = function initialise() {
         data = packet.data;
       }
 
-      spark.emit('data', data, raw);
+      process.nextTick(function tick() {
+        spark.emit('data', data, raw);
+      });
     });
   });
 
